@@ -51,6 +51,9 @@ function Header () {
                     font-size: 16px;
                     color: #3B3B54;
                     border-bottom: 1px solid #f3f3f3;
+                    max-width: 1200px;
+                    z-index: 1;
+                    margin: auto;
                 }
                 .container {
                     display: flex;

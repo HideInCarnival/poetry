@@ -15,6 +15,12 @@ const App = function ({children}) {
                 {children}
             </main>
             <Footer />
+        <style jsx>{`
+            main {
+                max-width: 1200px;
+                margin: auto;
+            }
+        `}</style>
         </div>
     )
 }

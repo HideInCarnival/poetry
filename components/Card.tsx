@@ -1,13 +1,13 @@
 import React from 'react'
 
-function Card () {
+function Card ({bgColor="#fff"}) {
   return (
     <a href="#">
-      <div className="card">
+      <div className="card" style={{'backgroundColor': bgColor }}>
         <div>
           <h3 className="title">老虎的金黄</h3>
           <p className="author">博尔赫斯</p>
-          <div className="article">
+          {/* <div className="article">
           我一次又一次地观看<br/>
           那只英武的孟加拉虎<br/>
           直到金黄色的傍晚，<br/>
@@ -27,7 +27,7 @@ function Card () {
           神话和史诗里的闪光，<br/>
           啊，还有那更可爱的金黄，你的头发，<br/>
           我的手渴望把它抚摸。<br/>
-          </div>
+          </div> */}
         </div>
       </div>
     <style jsx>{`
@@ -41,9 +41,19 @@ function Card () {
         box-shadow: var(--fraction-shadow-button,0px 1px 2px 0px rgba(0,0,0,0.1),0px 2px 10px 0px rgba(0,0,0,0.08));
         transition: all 0.25s ease 0s;
         width: 260px;
-        height: 400px;
+        // height: 400px;
+        margin: 10px 10px;
         padding: 0px 20px;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        // background-color: #EA3862;
+        color: #fff;
+        text-align: center;
+      }
+      .card::-webkit-scrollbar {
+        display: none;
       }
       .card:hover {
         transform: translateY(-8px);
@@ -51,7 +61,8 @@ function Card () {
       .article {
         white-space: pre-line;
         font-size: 15px;
-        color: #333;
+        // color: #333;
+        font-weight: 500;
       }
       h3.title {
         padding: 0px;
@@ -60,7 +71,7 @@ function Card () {
         overflow: hidden;
         text-overflow: ellipsis;
         font-weight: 500;
-        color: rgb(51, 51, 51);
+        // color: rgb(51, 51, 51);
         width: 100%;
       }
       p.author {
@@ -69,7 +80,7 @@ function Card () {
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 13px;
-        color: rgb(170, 170, 170);
+        // color: rgb(170, 170, 170);
       }
     `}</style>
     </a>

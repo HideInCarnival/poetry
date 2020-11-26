@@ -3,7 +3,7 @@ import React from 'react'
 function Search () {
     return (
         <div id="search-box">
-            <input type="text" placeholder="Search" />
+            <input type="text" placeholder="Search..." />
         <style jsx>{`
             #search-box {
                 display: flex;
@@ -21,7 +21,6 @@ function Search () {
                 color: rgba(0, 0, 32, 0.8);
                 font-weight: 400;
                 font-size: 16px;
-                
             }
             #search-box input:focus {
                 transition: 150ms;
