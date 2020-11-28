@@ -90,7 +90,7 @@ function Authors () {
         display: flex;
       }
       .left-nav {
-        max-width: 280px;
+        max-width: 200px;
         overflow: hidden;
       }
       .left-nav nav {

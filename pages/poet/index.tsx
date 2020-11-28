@@ -77,7 +77,7 @@ function  Poet () {
         font-family: SF Pro SC,SF Pro Text,SF Pro Icons,PingFang SC,Helvetica Neue,Helvetica,Arial,sans-serif;
       }
       .intro p, .work-list {
-        max-width: 800px;
+        max-width: 1000px;
         font-size: 20px;
         letter-spacing: -0.5px;
         font-weight: 300;
