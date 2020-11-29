@@ -1,40 +1,66 @@
 import React from 'react'
 import App from '../../components/App'
+import Link from 'next/Link'
+import { useRouter } from 'next/router'
+import { usePoemQuery, usePoemsQuery } from '../../query'
 
 function Poem () {
+    const router = useRouter()
+    const { id, author } = router.query
+    const poemBack = usePoemQuery({
+        variables: {
+            id: id.toString()
+        }
+    })
+    const poem = poemBack?.data?.poem
+    const poemsBack = usePoemsQuery({
+        variables: {
+            author
+        }
+    })
+    const poems = poemsBack?.data?.poems
+    console.log(poem.article);
     return (
         <App>
             <div id="poem">
                 <div className="left-nav">
                     <nav>
-                        <div className="column">叶芝的其他诗歌</div>
+                        <div className="column">{ author }的其他诗歌</div>
                         <div className="nav-item">
-                            <div>
-                                <a href="">本布尔山下</a>
-                            </div>
-                            <div>
-                                <a href="">本布尔山下</a>
-                            </div>
-                            <div>
-                                <a href="">本布尔山下</a>
-                            </div>
+                            {
+                                poemsBack.loading ? 
+                                <>loading</> :
+                                poems.map( (poem) => (
+                                    <div>
+                                        <Link href={`/poem/${poem.id}?author=${poem.author}`}>
+                                            <a>
+                                                {poem.title}
+                                            </a>
+                                        </Link>
+                                    </div>
+                                ) )
+                            }
                         </div>
                     </nav>
                 </div>
                 <div className="poem-body">
-                    <div className="center">
-                        <h3>本布尔山下</h3>
-                        <div className="author">
-                            <a href="">
-                                Yeats
-                            </a>
-                        </div>
-                    </div>
-                    <div className="main-text">
-                        此刻，他们疾驶在冬日的黎明，<br/>
-                        本布尔本山是他们身后的景致。<br/>
-                        这些，是他们想说的要旨。
-                    </div>
+                    {
+                        poemBack.loading ? 
+                        <>loading</> :
+                        <>
+                            <div className="center">
+                            <h3>{poem.title}</h3>
+                            <div className="author">
+                                <a href="">
+                                    {poem.author}
+                                </a>
+                            </div>
+                            </div>
+                            <div className="main-text">
+                                {poem.article}
+                            </div>
+                        </>
+                    }
                 </div>
             </div>
         <style jsx>{`
@@ -84,6 +110,7 @@ function Poem () {
                 color: #3b3b54;
                 font-weight: 600;
                 line-height: 1.5;
+                white-space: pre-line;
             }
             .center {
                 display: flex;
@@ -95,6 +122,5 @@ function Poem () {
         </App>
     )
 }
-
 
 export default Poem

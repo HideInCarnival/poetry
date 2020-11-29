@@ -7,7 +7,7 @@ function Header () {
         <header>
             <div className="container header-wrapper">
                 <div className="left-nav">
-                    <Link href="#">
+                    <Link href="/">
                         <a className="title">
                             Poetry
                         </a>
