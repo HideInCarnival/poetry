@@ -12,3 +12,25 @@ export function getSomeRandom (arr: [], need: number): any[] {
         return result;
     }
 }
+
+export function removeRepetition(poetList: any[]): any[] {
+    const countries = poetList.map(item => {
+        if (typeof item === 'object' && item.nationality) {
+            return item.nationality
+        }
+        return
+    })
+    return Array.from(new Set(countries))
+}
+
+export function numToArr(start: number, end: number): number[] {
+    const arr = []
+    let i = start
+    if (start > end) {
+        return arr
+    }
+    while(i <= end) {
+        arr.push(i++)
+    }
+    return arr
+}

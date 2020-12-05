@@ -9,6 +9,8 @@ const App = function ({children}) {
                 <title>外国诗歌精选</title>
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+                <link rel="stylesheet" href="iconFont/iconfont.css"/>
+                <script src="/iconFont/iconfont.js"></script>
             </Head>
             <Header />
             <main>

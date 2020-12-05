@@ -4,66 +4,67 @@ import Link from 'next/Link'
 import { useRouter } from 'next/router'
 import { usePoemQuery, usePoemsQuery } from '../../query'
 
-function Poem () {
-    const router = useRouter()
-    const { id, author } = router.query
-    const poemBack = usePoemQuery({
-        variables: {
-            id: id.toString()
-        }
-    })
-    const poem = poemBack?.data?.poem
-    const poemsBack = usePoemsQuery({
-        variables: {
-            author
-        }
-    })
-    const poems = poemsBack?.data?.poems
-    console.log(poem.article);
-    return (
-        <App>
-            <div id="poem">
-                <div className="left-nav">
-                    <nav>
-                        <div className="column">{ author }的其他诗歌</div>
-                        <div className="nav-item">
-                            {
-                                poemsBack.loading ? 
-                                <>loading</> :
-                                poems.map( (poem) => (
-                                    <div>
-                                        <Link href={`/poem/${poem.id}?author=${poem.author}`}>
-                                            <a>
-                                                {poem.title}
-                                            </a>
-                                        </Link>
-                                    </div>
-                                ) )
-                            }
-                        </div>
-                    </nav>
-                </div>
-                <div className="poem-body">
-                    {
-                        poemBack.loading ? 
-                        <>loading</> :
-                        <>
-                            <div className="center">
-                            <h3>{poem.title}</h3>
-                            <div className="author">
-                                <a href="">
-                                    {poem.author}
-                                </a>
-                            </div>
-                            </div>
-                            <div className="main-text">
-                                {poem.article}
-                            </div>
-                        </>
-                    }
-                </div>
+function Poem() {
+  const router = useRouter()
+  const { id, author } = router.query
+  const poemBack = usePoemQuery({
+    variables: {
+      id: Number(id)
+    }
+  })
+  const poem = poemBack?.data?.poem
+  const poemsBack = usePoemsQuery({
+    variables: {
+      author
+    }
+  })
+  const poems = poemsBack?.data?.poems
+  return (
+    <App>
+      <div id="poem">
+        <div className="left-nav">
+          <nav>
+            <div className="column">{author}的诗歌</div>
+            <div className="nav-item">
+              {
+                poemsBack.loading ?
+                  <>loading</> :
+                  poems.map((poem) => (
+                    <div key={poem.id}>
+                      <Link href={`/poem/${poem.id}?author=${poem.author}`}>
+                        <a className={poem.id == id ? 'cur-poem' : ''}>
+                          {poem.title}
+                        </a>
+                      </Link>
+                    </div>
+                  ))
+              }
             </div>
-        <style jsx>{`
+          </nav>
+        </div>
+        <div className="poem-body">
+          {
+            poemBack.loading ?
+              <>loading</> :
+              <>
+                <div className="center">
+                  <h3>{poem.title}</h3>
+                  <div className="author">
+                    <Link href={`/poet/${poem.author_id}`}>
+                      <a>
+                        {poem.author}
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+                <div className="main-text">
+                  {poem.article}
+                </div>
+              </>
+          }
+        </div>
+      </div>
+      <style jsx>{`
             #poem {
                 display: flex;
             }
@@ -88,6 +89,10 @@ function Poem () {
                 font-size: 15px;
                 width: 100%;
                 padding-left: 16px;
+            }
+
+            nav .nav-item a.cur-poem {
+                color: #4630eb;
             }
 
             nav .nav-item a:hover {
@@ -118,9 +123,9 @@ function Poem () {
                 align-items: center;
                 margin: auto;
             }
-        `}</style>    
-        </App>
-    )
+        `}</style>
+    </App>
+  )
 }
 
 export default Poem

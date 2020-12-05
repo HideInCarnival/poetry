@@ -23,7 +23,11 @@ function Home () {
                 <div className="random column">
                     <div className="random-index">
                         <h5>Random</h5>
-                        <button onClick={randomCard}>随机</button>
+                        <button onClick={randomCard}>
+                            <svg className="icon" aria-hidden="true">
+                                <use xlinkHref="#icon-shuaxin"></use>
+                            </svg>
+                        </button>
                     </div>
                     <div className="card-group">
                         {
@@ -60,7 +64,7 @@ function Home () {
                 font-weight: 500;
                 font-size: 28px;
                 font-family: GT-Walsheim, "Neue Helvetica W02", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                margin-bottom: 25px;
+                margin: 0;
                 font-weight: 600;
                 font-size: 28px;
                 letter-spacing: -1px;
@@ -68,6 +72,30 @@ function Home () {
             .random-index {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
+                padding: 70px 10px 20px 0;
+            }
+            .random-index button {
+                height: 30px;
+                width: 30px;
+                background: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+            }
+            .random-index button svg {
+                width: 100%;
+                height: 100%;
+            }
+            .random-index button:hover svg {
+                fill: #4630eb;
+            }
+            .random {
+                margin-bottom: 60px;
+            }
+            .jigsaw h5 {
+                margin-top: 20px;
+                margin-bottom: 30px;
             }
             .card-group {
                 display: flex;

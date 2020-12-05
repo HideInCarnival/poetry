@@ -17,21 +17,14 @@ function Header () {
                     <div className="search-box header-item">
                         <Search />
                     </div>
-                    <Link href="#">
+                    <Link href="/authors/all?page=1">
                         <a>
                             <div className="choose-item">
                                 <div>诗人</div>
                             </div>
                         </a>
                     </Link>
-                    <Link href="#">
-                        <a>
-                            <div className="choose-item">
-                                <div>名篇</div>
-                            </div>
-                        </a>
-                    </Link>
-                    <Link href="#">
+                    <Link href="/about">
                         <a>
                             <div className="choose-item">
                                 <div>关于</div>
