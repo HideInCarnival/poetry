@@ -95,7 +95,7 @@ function Home () {
             }
             .jigsaw h5 {
                 margin-top: 20px;
-                margin-bottom: 30px;
+                margin-bottom:
             }
             .card-group {
                 display: flex;
