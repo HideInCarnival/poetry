@@ -33,34 +33,38 @@ function Search() {
         </span>
       </div>
       <div id="search-result">
-        <ul>
-          {
-            !searchKey || poemSearchBack.loading || poetSearchBack.loading ?
-            null
-            :
-            [...poemSearchBack.data.poemLike, ...poetSearchBack.data.poetLike].map((item, index) => {
-              return item.author ? (
-                <Link href={`/poem/${item.id}`} key={index}>
-                  <a>
-                    <li>
-                      <div>{item.title}</div>
-                      <span>{item.author}</span>
-                    </li>
-                  </a>
-                </Link>
-              ) : (
-                <Link href={`/poet/${item.id}`} key={index}>
-                  <a>
-                    <li>
-                      <div>{item.name}</div>
-                      <span>{item.nationality}</span>
-                    </li>
-                  </a>
-                </Link>
-              )
-            })
-          }
-        </ul>
+        {
+          searchKey ? 
+          (<ul>
+            {
+              poemSearchBack.loading || poetSearchBack.loading || !isFocus ?
+              null
+              :
+              [...poemSearchBack.data.poemLike, ...poetSearchBack.data.poetLike].map((item, index) => {
+                return item.author ? (
+                  <Link href={`/poem/${item.id}`} key={index}>
+                    <a>
+                      <li>
+                        <div>{item.title}</div>
+                        <span>{item.author}</span>
+                      </li>
+                    </a>
+                  </Link>
+                ) : (
+                  <Link href={`/poet/${item.id}`} key={index}>
+                    <a>
+                      <li>
+                        <div>{item.name}</div>
+                        <span>{item.nationality}</span>
+                      </li>
+                    </a>
+                  </Link>
+                )
+              })
+            }
+          </ul>) :
+          null
+        }
       </div>
     <style jsx>{`
         #search {

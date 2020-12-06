@@ -9,6 +9,7 @@ function AuthorNav () {
   const router = useRouter()
   const { query } = router
   const {loading, data} = useAuthorsQuery()
+  console.log(useAuthorsQuery());
   const poets = data?.poets
   return (
     <div className="left-nav">
