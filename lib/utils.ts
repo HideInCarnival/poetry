@@ -34,3 +34,13 @@ export function numToArr(start: number, end: number): number[] {
     }
     return arr
 }
+
+export function debounce(fn: Function, wait: number) {
+    let timer = null;
+    return function (...args: any[]) {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+            fn.apply(this, args)
+        }, wait)
+    }
+}

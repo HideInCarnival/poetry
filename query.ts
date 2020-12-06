@@ -1,4 +1,4 @@
-import { useQuery, QueryHookOptions, DocumentNode, gql } from '@apollo/client'
+import { useQuery, QueryHookOptions, DocumentNode, gql, useLazyQuery } from '@apollo/client'
 
 export type Maybe<T> = T | null
 
@@ -51,7 +51,7 @@ export const PoemsQueryDocument: DocumentNode = gql`
 
 // find poems by pages
 export type PoemsByPageVariables = {
-    author?: Maybe<Scalar['String']>
+    author?: Maybe<Scalar["String"]>
     offset: Maybe<Scalar["Int"]>
     limit: Maybe<Scalar["Int"]>
 }
@@ -68,6 +68,27 @@ export const PoemsByPageDocument: DocumentNode = gql`
                     title
                 }
             }
+        }
+    }
+`
+
+
+// find poem by like query
+export type PoemLikeVariables = {
+    title: Maybe<Scalar["String"]>
+}
+export function usePoemLikeQuery(options: QueryHookOptions<any, PoemLikeVariables>) {
+    return useQuery(PoemLikeQueryDocument, options)
+}
+export function usePoemLikeLazyQuery(options: QueryHookOptions<any, PoemLikeVariables>) {
+    return useLazyQuery(PoemLikeQueryDocument, options)
+}
+export const PoemLikeQueryDocument: DocumentNode = gql`
+    query FindPoemLike ($title: String!) {
+        poemLike(title: $title) {
+            id
+            title
+            author
         }
     }
 `
@@ -131,6 +152,28 @@ export const AuthorsByPageDocument: DocumentNode = gql`
                     name
                 }
             }
+        }
+    }
+`
+
+
+
+// find poet by like query
+export type PoetLikeVariables = {
+    name: Maybe<Scalar["String"]>
+}
+export function usePoetLikeQuery(options: QueryHookOptions<any, PoetLikeVariables>) {
+    return useQuery(PoetLikeQueryDocument, options)
+}
+export function usePoetLikeLazyQuery(options: QueryHookOptions<any, PoetLikeVariables>) {
+    return useLazyQuery(PoetLikeQueryDocument, options)
+}
+export const PoetLikeQueryDocument: DocumentNode = gql`
+    query FindPoetLike ($name: String!) {
+        poetLike(name: $name) {
+            id
+            name
+            nationality
         }
     }
 `
