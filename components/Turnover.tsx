@@ -8,22 +8,20 @@ function Turnover () {
                     <img src="gypsy.jpeg" alt="jigsaw" className="main-img" />
                 </div>
                 <div className="back">
-                    <a href="#">
-                        <div className="poem">
-                            Under bare Ben Bulben's head<br/>
-                            In Drumcliff churchyard Yeats is laid.<br/>
-                            An ancestor was rector there<br/>
-                            Long years ago, a church stands near,<br/>
-                            By the road an ancient cross.<br/>
-                            No marble, no conventional phrase;<br/>
-                            On limestone quarried near the spot<br/>
-                            By his command these words are cut:<br/>
-                            Cast a cold eye<br/>
-                            On life, On death<br/>
-                            Horseman, pass by!
-                        </div>
-                        <img src="yeats.jpg" alt="yeats"/>
-                    </a>
+                    <div className="poem">
+                        Under bare Ben Bulben's head<br/>
+                        In Drumcliff churchyard Yeats is laid.<br/>
+                        An ancestor was rector there<br/>
+                        Long years ago, a church stands near,<br/>
+                        By the road an ancient cross.<br/>
+                        No marble, no conventional phrase;<br/>
+                        On limestone quarried near the spot<br/>
+                        By his command these words are cut:<br/>
+                        Cast a cold eye<br/>
+                        On life, On death<br/>
+                        Horseman, pass by!
+                    </div>
+                    <img src="yeats.jpg" alt="yeats"/>
                 </div>
             </div>
         <style jsx>{`
@@ -55,8 +53,9 @@ function Turnover () {
                 justify-content: space-between;
             }
             .imgbox:hover {
-                // animation: turnover 2s infinite linear;
-                transform: rotateY(180deg);
+                animation: turnover 2s 1 linear;
+                animation-fill-mode:forwards;
+                // transform: rotateY(180deg);
             }
             .imgbox img.main-img {
                 display: block;

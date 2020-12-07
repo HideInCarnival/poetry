@@ -32,12 +32,17 @@ function Home () {
                     <div className="card-group">
                         {
                             loading ?
-                            <>loading</> :
+                            cardColor.map((color, index) => (
+                                <div key={color}>
+                                    <Card bgColor={cardColor[index]} title={''}  author={''} loading={loading}  />
+                                </div>
+                            ))
+                            :
                             getSomeRandom(poems, cardColor.length).map( (poem, index) => (
                                 <Link href={`/poem/${poem.id}?author=${poem.author}`} key={poem.id}>
                                     <a>
                                         <div>
-                                            <Card bgColor={cardColor[index]} title={poem.title || '老虎的金黄'}  author={poem.author || '博尔赫斯'}  />
+                                            <Card bgColor={cardColor[index]} title={poem.title || '老虎的金黄'}  author={poem.author || '博尔赫斯'} loading={loading}  />
                                         </div>
                                     </a>
                                 </Link>
@@ -52,7 +57,11 @@ function Home () {
                         </h5>
                     </div>
                     <div>
-                        <Turnover />
+                        <Link href="/poem/732">
+                            <a>
+                                <Turnover />
+                            </a>
+                        </Link>
                     </div>
                 </div>
             </div>

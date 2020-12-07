@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from 'next/Link'
 import Search from './Search'
-
+import { useRouter } from 'next/router'
 function Header () {
+    const {pathname} = useRouter()
     return (
         <header>
             <div className="container header-wrapper">
@@ -18,14 +19,14 @@ function Header () {
                         <Search />
                     </div>
                     <Link href="/authors/all?page=1">
-                        <a>
+                        <a className={`${pathname.indexOf('authors')<0 ? '' : 'active'}`}>
                             <div className="choose-item">
                                 <div>诗人</div>
                             </div>
                         </a>
                     </Link>
                     <Link href="/about">
-                        <a>
+                        <a className={`${pathname.indexOf('about')<0 ? '' : 'active'}`}>
                             <div className="choose-item">
                                 <div>关于</div>
                             </div>
@@ -71,6 +72,9 @@ function Header () {
                     height: 40px;
                     padding: 0 16px;
                     border-radius: 3px;
+                }
+                .right-nav a.active {
+                    background-color: rgba(0, 0, 0, .1)
                 }
                 .choose-item {
                     height: 100%;
