@@ -1,31 +1,44 @@
-import React, { useState } from 'react'
-import { usePoemLikeQuery, usePoetLikeQuery } from '../query'
-import Link from 'next/Link'
-import { debounce } from '../lib/utils'
+import React, { useState } from "react";
+import { usePoemLikeQuery, usePoetLikeQuery } from "../query";
+import Link from "next/Link";
+import { debounce } from "../lib/utils";
 
 function Search() {
-  const [searchKey, setSearchKey] = useState('')
-  const [isFocus, setIsFocus] = useState(false)
+  const [searchKey, setSearchKey] = useState("");
+  const [isFocus, setIsFocus] = useState(false);
   const poemSearchBack = usePoemLikeQuery({
     variables: {
-      title: searchKey
-    }
-  })
+      title: searchKey,
+    },
+  });
   const poetSearchBack = usePoetLikeQuery({
     variables: {
-      name: searchKey
-    }
-  })
+      name: searchKey,
+    },
+  });
 
   function searchByKey(e: React.FormEvent<HTMLInputElement>): void {
-    const element = e.target as HTMLInputElement
-    const value = element.value
-    setSearchKey(value)
+    const element = e.target as HTMLInputElement;
+    const value = element.value;
+    setSearchKey(value);
   }
   return (
     <div id="search">
       <div id="search-box">
-        <input type="search" placeholder="Search..." autoComplete="off" onInput={(e) => {debounce(searchByKey, 700)(e)}} onFocus={() => {setIsFocus(true)}} onBlur={() => {setIsFocus(false)}} />
+        <input
+          type="search"
+          placeholder="Search..."
+          autoComplete="off"
+          onInput={(e) => {
+            debounce(searchByKey, 700)(e);
+          }}
+          onFocus={() => {
+            setIsFocus(true);
+          }}
+          onBlur={() => {
+            setIsFocus(false);
+          }}
+        />
         <span className="icon-search">
           <svg className="icon" aria-hidden="true">
             <use xlinkHref="#icon-search"></use>
@@ -33,12 +46,14 @@ function Search() {
         </span>
       </div>
       <div id="search-result">
-        <ul>
-          {
-            !searchKey || poemSearchBack.loading || poetSearchBack.loading ?
-            null
-            :
-            [...poemSearchBack.data.poemLike, ...poetSearchBack.data.poetLike].map((item, index) => {
+        {!searchKey ||
+        poemSearchBack.loading ||
+        poetSearchBack.loading ? null : (
+          <ul>
+            {[
+              ...poemSearchBack.data.poemLike,
+              ...poetSearchBack.data.poetLike,
+            ].map((item, index) => {
               return item.author ? (
                 <Link href={`/poem/${item.id}`} key={index}>
                   <a>
@@ -57,12 +72,12 @@ function Search() {
                     </li>
                   </a>
                 </Link>
-              )
-            })
-          }
-        </ul>
+              );
+            })}
+          </ul>
+        )}
       </div>
-    <style jsx>{`
+      <style jsx>{`
         #search {
           position: relative;
         }
@@ -79,7 +94,7 @@ function Search() {
           left: 2px;
         }
         .icon-search:before {
-          content: '';
+          content: "";
         }
         .icon-search svg {
           width: 25px;
@@ -92,7 +107,10 @@ function Search() {
           border: 0;
           transition: 150ms;
           outline: none;
-          font-family: expo-brand-book,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+          font-family: expo-brand-book, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+            "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+            "Segoe UI Symbol", "Noto Color Emoji";
           color: rgba(0, 0, 32, 0.8);
           font-weight: 500;
           font-size: 16px;
@@ -138,8 +156,7 @@ function Search() {
         }
       `}</style>
     </div>
-
-  )
+  );
 }
 
-export default Search
+export default Search;

@@ -8,7 +8,7 @@ function Turnover () {
                     <img src="gypsy.jpeg" alt="jigsaw" className="main-img" />
                 </div>
                 <div className="back">
-                    <a href="#">
+                    <a href="/about">
                         <div className="poem">
                             Under bare Ben Bulben's head<br/>
                             In Drumcliff churchyard Yeats is laid.<br/>
@@ -39,6 +39,7 @@ function Turnover () {
                 width: 70%;
                 transform-style: preserve-3d;
                 margin: auto;
+                height: 600px;
             }
             .imgbox > div {
                 position: absolute;
@@ -55,7 +56,7 @@ function Turnover () {
                 justify-content: space-between;
             }
             .imgbox:hover {
-                // animation: turnover 2s infinite linear;
+                animation: turnover 2s linear 1;
                 transform: rotateY(180deg);
             }
             .imgbox img.main-img {
