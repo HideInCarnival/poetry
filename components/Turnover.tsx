@@ -56,8 +56,14 @@ function Turnover () {
                 justify-content: space-between;
             }
             .imgbox:hover {
+<<<<<<< HEAD
                 animation: turnover 2s linear 1;
                 transform: rotateY(180deg);
+=======
+                animation: turnover 2s 1 linear;
+                animation-fill-mode:forwards;
+                // transform: rotateY(180deg);
+>>>>>>> 6c547336bd932af95a62aea29db73c010a4a230d
             }
             .imgbox img.main-img {
                 display: block;
