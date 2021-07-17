@@ -2,6 +2,7 @@ import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from '@a
 import merge from 'deepmerge'
 import { useMemo } from 'react';
 
+import config from '../config'
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__'
 
@@ -11,7 +12,7 @@ function createApolloClient() {
     return new ApolloClient({
         ssrMode: typeof window === 'undefined',
         link: new HttpLink({
-            uri: 'http://localhost:4000/graphql'
+            uri: config.url
         }),
         cache: new InMemoryCache()
     })
