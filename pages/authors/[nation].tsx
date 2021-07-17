@@ -4,7 +4,7 @@ import Pagination from '../../components/Pagination'
 import { AuthorsByPageDocument } from '../../query'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { initializeApollo } from '../../lib/apolloClient' 
-import Link from 'next/Link'
+import Link from 'next/link'
 import AuthorNav from '../../components/AuthorNav'
 
 type Data = {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Link from 'next/Link'
+import Link from 'next/link'
 import App from '../../components/App'
 import Card from '../../components/Card'
 import Screen from '../../components/Screen'

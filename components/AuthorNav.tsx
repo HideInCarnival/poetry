@@ -2,7 +2,7 @@ import React from 'react'
 import { removeRepetition } from '../lib/utils'
 import { useAuthorsQuery } from '../query'
 import { useRouter } from 'next/router'
-import Link from 'next/Link'
+import Link from 'next/link'
 
 
 function AuthorNav () {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { usePoemLikeQuery, usePoetLikeQuery } from "../query";
-import Link from "next/Link";
+import Link from "next/link";
 import { debounce } from "../lib/utils";
 
 function Search() {

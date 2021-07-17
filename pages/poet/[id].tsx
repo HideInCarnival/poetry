@@ -1,6 +1,6 @@
 import React from 'react'
 import App from '../../components/App'
-import Link from 'next/Link'
+import Link from 'next/link'
 import { AuhtorQueryDocument, usePoemsQuery } from '../../query'
 import { initializeApollo } from '../../lib/apolloClient'
 import { GetServerSideProps } from 'next'

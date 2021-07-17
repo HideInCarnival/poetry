@@ -1,6 +1,6 @@
 import React from 'react'
 import App from '../../components/App'
-import Link from 'next/Link'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { usePoemQuery, usePoemsQuery } from '../../query'
 
