@@ -6,8 +6,10 @@ WORKDIR /code
 
 RUN yarn install
 
-ENV NODE_ENV=production
+ENV NODE_ENV production
 
 RUN yarn build
 
-CMD ["npm", "start"]
+EXPOSE 3000
+
+CMD ["yarn", "start"]
